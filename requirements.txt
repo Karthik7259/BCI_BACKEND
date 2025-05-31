@@ -1,0 +1,136 @@
+# BCI Backend System Requirements
+# ==============================
+# 
+# Comprehensive requirements file for the Brain-Computer Interface (BCI) 
+# backend system with real-time EEG emotion classification.
+#
+# Installation: pip install -r requirements.txt
+
+# Core Web Framework & API
+# ========================
+flask>=2.0.0                    # Web framework for API servers
+flask-cors>=3.0.0               # Cross-Origin Resource Sharing for frontend
+
+# Data Processing & Analysis
+# ==========================
+numpy>=1.20.0                   # Numerical computing and array operations
+requests>=2.25.0                # HTTP client for API communication
+joblib>=1.0.0                   # Model serialization and loading
+
+# Machine Learning
+# ===============
+scikit-learn>=1.0.0             # ML library for emotion classification model
+
+# Development & Analysis Tools (Optional)
+# =======================================
+pandas>=1.3.0                   # Data analysis and manipulation (for analysis scripts)
+matplotlib>=3.0.0               # Plotting and visualization (for analysis scripts)
+
+# Real EEG Device Dependencies (Required for Hardware)
+# ===================================================
+# Note: These packages are required for real EEG device connection
+# Install them separately as they may require special setup
+
+# NeuroSDK - For NeuroMD EEG devices (Callibri, Brainbit)
+# Installation: pip install neurosdk
+# Documentation: https://github.com/NeuroMD/neurosdk-python
+# neurosdk>=1.0.0
+
+# EmotionalMath - Signal processing library from NeuroMD
+# Installation: Contact NeuroMD for access and installation instructions
+# This library provides EEG signal processing and emotion analysis capabilities
+# em-st-artifacts
+
+# Alternative EEG Device Libraries (Choose based on your hardware)
+# ================================================================
+# Uncomment the appropriate library for your EEG device:
+
+# For OpenBCI devices:
+# pyopenbci>=1.0.0
+
+# For Emotiv devices:
+# cortex-python>=1.0.0
+
+# For Muse devices (via LSL):
+# pylsl>=1.13.0
+# muselsl>=2.0.0
+
+# For generic LSL-compatible devices:
+# pylsl>=1.13.0
+
+# System Dependencies
+# ==================
+# These are typically included with Python but listed for completeness
+# subprocess  # Built-in - process management
+# threading   # Built-in - concurrent execution
+# json        # Built-in - JSON parsing
+# csv         # Built-in - CSV file handling
+# time        # Built-in - time utilities
+# datetime    # Built-in - date/time handling
+# os          # Built-in - operating system interface
+# sys         # Built-in - system-specific parameters
+# atexit      # Built-in - exit handlers
+
+# Installation Notes
+# ==================
+# 
+# 1. CORE SYSTEM (Minimum required):
+#    pip install flask flask-cors numpy requests joblib scikit-learn
+#
+# 2. REAL EEG DEVICE SUPPORT:
+#    pip install neurosdk
+#    # Contact NeuroMD for EmotionalMath library access
+#
+# 3. DEVELOPMENT/ANALYSIS TOOLS (Optional):
+#    pip install pandas matplotlib
+#
+# 4. VERIFY INSTALLATION:
+#    python -c "import flask, numpy, sklearn, joblib, requests; print('✅ Core dependencies installed')"
+#
+# 5. TEST REAL DEVICE (if hardware available):
+#    python -c "import neurosdk; print('✅ NeuroSDK available')"
+#
+# File Dependencies by Component:
+# ===============================
+# 
+# bci_api.py (EEG Device API):
+#   - flask, flask-cors, neurosdk, em_st_artifacts, numpy, threading, csv
+#
+# real_time_monitor.py (Real-time Processing):
+#   - requests, numpy, json, time, datetime, eeg_converter
+#
+# web_server.py (Web API):
+#   - flask, flask-cors, json, os, time, datetime
+#
+# eeg_converter.py (ML Model Interface):
+#   - joblib, numpy, json, datetime
+#
+# start_bci.py (System Launcher):
+#   - subprocess, sys, os, time
+#
+# Analysis Tools (Optional):
+#   - main.py: joblib, numpy, pandas, sklearn
+#   - analyze_features.py: joblib, numpy
+#   - detailed_analysis.py: json, datetime
+#   - quick_predict.py: joblib, numpy
+#   - eeg_template.py: joblib, numpy
+#
+# Hardware Requirements:
+# =====================
+# - NeuroMD EEG device (Callibri, Brainbit, etc.) OR
+# - Compatible EEG device with appropriate drivers
+# - Bluetooth connectivity for wireless devices
+# - Python 3.8+ (recommended: Python 3.9+)
+# - Windows 10/11, macOS 10.15+, or Linux Ubuntu 18.04+
+#
+# Network Requirements:
+# ====================
+# - Localhost access to ports 5000 and 5001
+# - No external network access required (runs locally)
+#
+# Performance Requirements:
+# ========================
+# - RAM: Minimum 4GB, Recommended 8GB+
+# - CPU: Any modern multi-core processor
+# - Storage: ~100MB for models and dependencies
+# - Real-time processing requires consistent CPU availability
